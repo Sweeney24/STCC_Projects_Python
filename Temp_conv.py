@@ -7,17 +7,17 @@ temperature from Fahrenheit to Celsius. Or Celsius to Fahrenheit")
 
 #Get the numerical value the user wants converted
 tempNumber = float(input('Enter the temperature you wish to be converted: '))
-#Get the unit that the user wants to convert to
+#Get the unit for the number the user input in line 9
 tempUnit = input('Is this Fahrenheit or Celsius? Enter F or C: ')
 
 #if than statements
-if tempUnit == 'F' or tempUnit == 'f':
+if tempUnit == 'F' or tempUnit == 'f': #allow upper or lower case for some margin of user error
     if tempNumber > 212:
         print ('Temp cannot be > 212')
     else:
         convFtoCelsius = (5.0 / 9) * (tempNumber - 32) # convert fahrenheit to celsius - renamed variable for clarity
         print('The Celsius equivalent is: ', str(format(convFtoCelsius, ".1f")))
-elif tempUnit == 'C' or tempUnit == 'c':
+elif tempUnit == 'C' or tempUnit == 'c': #allow upper or lower case for some margin of user error
     if tempNumber > 100:
         print('Temp cannot be > 100')
     else:
