@@ -50,7 +50,7 @@ if uFirst_test >=0 and uSec_test >=0 and uThird_test >=0 and uFourth_test >=0:
             YES_DROP_TEST = (uFirst_test + uSec_test + uThird_test + uFourth_test - uMin) / 3  # Constant here
             print(uName,' received a ',format(YES_DROP_TEST, ".1f"))
     else:
-        print("no",NO_DROP_TEST)
+        print(uName, "received a ",format(NO_DROP_TEST, ".1f"))
 else:
     print('Test score cannot be less than 0')
     exit()
