@@ -5,7 +5,7 @@
 print("Hello, and welcome to the temperature converter! \nMy name is Andrew and I'll be your guide to converting \
 temperature from Fahrenheit to Celsius. Or Celsius to Fahrenheit")
 
-#Get the numerical value the user wants converted
+#Get the numerical value the user wants converted. Forcing float data type.
 tempNumber = float(input('Enter the temperature you wish to be converted: '))
 #Get the unit for the number the user input in line 9
 tempUnit = input('Is this Fahrenheit or Celsius? Enter F or C: ')
@@ -25,8 +25,9 @@ elif tempUnit == 'C' or tempUnit == 'c': #allow upper or lower case for some mar
         print('The Fahrenheit equivalent is: ', str(format(convCtoFahrenheit, ".1f")))
 else:
     print('Please enter a valid temperature unit')#I know the assignement says "Enter a F or C" but that feels
-                                                  #clunky to me. The valid input is given as example in line 11.
+                                                  #clunky to me. The valid input is given as example in line 11 input.
 
+# #BELOW HERE IS OLD CODE
 
 # #Temperature Converter Assignment for Prof. Candido's Python class
 #
