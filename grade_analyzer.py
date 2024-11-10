@@ -21,32 +21,32 @@ if uFirst_test >=0 and uSec_test >=0 and uThird_test >=0 and uFourth_test >=0:
             if uFirst_test < uThird_test:
                 if uFirst_test < uFourth_test:
                         uMin = uFirst_test
-                        #print("first should be min",YES_DROP_TEST)
+                        #print("first should be min",YES_DROP_TEST)  #these were used to test logic
                 else:
                         uMin = uFourth_test
-                        #print("Fourth min",YES_DROP_TEST)
+                        #print("Fourth min",YES_DROP_TEST) #these were used to test logic
             else:
                 if uThird_test < uFourth_test:
                         uMin = uThird_test
-                        #print("Third min",YES_DROP_TEST)
+                        #print("Third min",YES_DROP_TEST) #these were used to test logic
                 else:
                         uMin = uFourth_test
-                        #print("Fourth min",YES_DROP_TEST)
+                        #print("Fourth min",YES_DROP_TEST) #these were used to test logic
         else:
             if uSec_test < uThird_test:
                 if uSec_test < uFourth_test:
                         uMin = uSec_test
-                        #print("Second min",YES_DROP_TEST)
+                        #print("Second min",YES_DROP_TEST) #these were used to test logic
                 else:
                         uMin = uFourth_test
-                        #print("Fourth min",YES_DROP_TEST)
+                        #print("Fourth min",YES_DROP_TEST) #these were used to test logic
             else:
                 if uThird_test < uFourth_test:
                         uMin = uThird_test
-                        #print("Third min",YES_DROP_TEST)
+                        #print("Third min",YES_DROP_TEST) #these were used to test logic
                 else:
                         uMin = uFourth_test
-                        #print(uMin,"Fourth min",YES_DROP_TEST)
+                        #print(uMin,"Fourth min",YES_DROP_TEST) #these were used to test logic
             YES_DROP_TEST = (uFirst_test + uSec_test + uThird_test + uFourth_test - uMin) / 3  # Constant here
             print(uName,' received a ',format(YES_DROP_TEST, ".1f"))
     else:
@@ -84,7 +84,7 @@ else:
     print('Letter grade average is F')
 
 
-
+#Old code below
 
 # calc_Drop_uFirst = (uSec_test + uThird_test + uFourth_test) / 3
 # calc_Drop_uSecond = (uFirst_test + uThird_test + uFourth_test) / 3
