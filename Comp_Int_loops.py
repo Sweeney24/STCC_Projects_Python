@@ -1,9 +1,23 @@
 #For Prof Candido's python class
 
+#variables
 uPrinciple = float(input('What is the starting principle: ')) #the users initial investment
-uIntRate = float(input('What is the annual interest rate: ')) #the interest rate
-uCompound = float(input('How many times per year is the interest compounded: ')) #how often the interest compounds
-uYears = float(input('How many years will the account earn interest: ')) #how long the user will invest
+while uPrinciple <= 0:
+    print ('Please enter a positive number')
+    uPrinciple = float(input('What is the starting principle: '))
+uIntRate = float(input('What is the interest rate: ')) #the interest rate
+while uIntRate <= 0:
+    print ('Please enter a positive number')
+    uIntRate = float(input('What is the annual interest rate: '))
+uMonths = float(input('How many months: ')) #amount of months
+while uMonths <= 0:
+    print('Please enter a positive number')
+    uMonths = float(input('How many months: '))
+
+uGoal = float(input('What is the goal amount?'))
+while uGoal <= 0:
+    print('Please enter a positive number')
+    uGoal = float(input('What is the goal amount?'))
 
 #convert to decimal
 real_interest = uIntRate / 100
