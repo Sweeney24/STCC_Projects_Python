@@ -22,6 +22,21 @@ while uGoal <= 0:
 #convert to decimal
 real_interest = uIntRate / 100
 
-#compute# following the order of operations.
-FinalValue = uPrinciple * (1 + real_interest / uCompound) ** (uCompound * uYears)
+uTime = (uMonths / 12)
 
+uAccount_balance = uPrinciple * (1 + real_interest / 12) ** (12 * uTime)
+print(format(uAccount_balance, ".2f"))
+uDisp_Month = 0
+while uAccount_balance < uGoal:
+    uMonths = uMonths + 1
+    uTime = (uMonths / 12)
+
+    for integer in range(1,13):
+        uDisp_Month += 1
+        uAccount_balance = uPrinciple * (1 + real_interest / 12) ** (12 * uTime)
+        print(uDisp_Month, format(uAccount_balance, ".2f"))
+
+
+#compute# following the order of operations.
+#FinalValue = uPrinciple * (1 + real_interest / uMonth_int) ** (uMonth_int * uMonths)
+#print('The expected value of your investment after', str(uMonths), 'months is','$',str(format(FinalValue,",.2f")))

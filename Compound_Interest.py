@@ -14,4 +14,4 @@ FinalValue = uPrinciple * (1 + real_interest / uCompound) ** (uCompound * uYears
 
 #print out expected investment. Converting the float of the amount of year to a string.
 # Also converting the final value to a string for easier formating.
-print('The expected value of your investment after', str(uYears), 'years is','$',str(format(FinalValue,"$,.2f")))
+print('The expected value of your investment after', str(uYears), 'years is','$',str(format(FinalValue,",.2f")))
