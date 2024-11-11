@@ -37,12 +37,14 @@ while uPrinciple < uGoal:
     uDisp_Month += 1
     #uAccount_balance = uPrinciple * (1 + real_interest / 12) ** (12 * uTime)
     #uAccount_balance = uPrinciple * (1 + real_interest / 12) ** (12 * uMonths) #testing with umonths
-    uAccount_balance_interest = uPrinciple * ((1 + real_interest) / 12)
-    uPrinciple = uPrinciple + uAccount_balance_interest
+    uPrinciple = uPrinciple * ( 1 + (real_interest / 12))
+
     #uMonths = uMonths + 1
-    while uDisp_Month <= uMonths:
-        print('Month', uDisp_Month,': $ ', format(uPrinciple, '.2f') )
-    print('Month', uDisp_Month, format(uPrinciple, ".2f"))
+    if uDisp_Month <= uMonths:
+        print('Month', uDisp_Month,': $', format(uPrinciple, '.2f') )
+    # print('Month', uDisp_Month, format(uPrinciple, ".2f"))
+
+print('It will take ', str(uDisp_Month), ' months to reach your goal of $', str(format(uGoal, ",.2f")))
 #
 #
 # #compute# following the order of operations.
