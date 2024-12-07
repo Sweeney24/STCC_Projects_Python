@@ -2,19 +2,34 @@
 import math
 
 def main():
+    fSquareFeetOfWall = (getFloatInput("Enter Square Feet of the Wall: "))
+    fPaintPrice = getFloatInput("Enter Paint Price: ")
+    fFeetPerGallonOfPaint = getFloatInput("Enter the feet per gallon of paint: ")
+    fLaborHoursPerGallon = getFloatInput("Enter Labor Hours per Gallon: ")
+    fPaintingLaborChargePerHour = getFloatInput("Enter Painting Labor charge per hour: ")
+    fStateSalesTax = getSalesTax(input("State the job is in: "))
+    fUserName = input("Enter your last name: ")
+    # getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)
+    Gallon_Of_Paint = getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)
+    fHours_of_labor = getLaborHours(fLaborHoursPerGallon, Gallon_Of_Paint)
+    fLabor_cost = getLaborCost(fPaintingLaborChargePerHour, fFeetPerGallonOfPaint, fLaborHoursPerGallon,fSquareFeetOfWall)
+    fPaint_Cost = getPaintCost(fPaintPrice, getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint))
+    fTotalTax =  ((fLabor_cost + fPaint_Cost) * fStateSalesTax)
+    fTotalCost = fTotalTax + fLabor_cost + fPaint_Cost
+    print("Gallons of paint: ", Gallon_Of_Paint)
+    print("Hours of labor: ", fHours_of_labor)
+    print("Paint Cost: $", fPaint_Cost)
+    print("Labor Charges: $", fLabor_cost)
+    print("Tax: $", fTotalTax)
+    print("Total Cost: $", fTotalCost)
 
-    getGallonsOfPaint()
-    getLaborHours()
-    getLaborCost()
-    getPaintCost()
-    getSalesTax("State the job is in: ")
 
 def getSalesTax(prompt):
-    fStates = input(prompt)
+    fStates = (prompt)
     if fStates == "MA":
-        fStateTax = .06
-    elif fStates == "CT":
         fStateTax = .0625
+    elif fStates == "CT":
+        fStateTax = .06
     elif fStates == "RI":
         fStateTax = .07
     elif fStates == "ME":
@@ -23,71 +38,52 @@ def getSalesTax(prompt):
         fStateTax = .06
     else:
         fStateTax = 0.0
-    print(fStateTax)
+    # print(fStateTax)
     return fStateTax
 
-def getLaborCost():
-    fRealLaborCost = getLaborHours() * fPaintingLaborChargePerHour
-    print(float(fRealLaborCost))
-
+def getLaborCost(paint_labor_hour, feet_per_gallon,lab_hours_per_gallon, square_feet_of_wall):
+    # fRealLaborCost = getLaborHours() * fPaintingLaborChargePerHour
+    fRealLaborCost = getLaborHours(lab_hours_per_gallon, getGallonsOfPaint(square_feet_of_wall, feet_per_gallon)) * paint_labor_hour
+    # print(float(fRealLaborCost))
     return fRealLaborCost
 
-def getGallonsOfPaint():
-    fRealGallons = fSquareFeetOfWall / fFeetPerGallonOfPaint
+def getGallonsOfPaint(sq_ft_wall, feet_per_gallon):
+    fRealGallons = sq_ft_wall / feet_per_gallon
+    # fRealGallons = fSquareFeetOfWall / fFeetPerGallonOfPaint
     fRealGallons = math.ceil(fRealGallons)
-    # print(int(fRealGallons))
+    # print("gallons of paint: ", int(fRealGallons))
     return int(fRealGallons)
 
-def getLaborHours():
-    fRealLaborHour = fLaborHoursPerGallon * getGallonsOfPaint()
-    print("Labor Hours: ", float(fRealLaborHour))
+def getLaborHours(lab_hours_gal, gallons_of_paint):
+    fRealLaborHour = lab_hours_gal * gallons_of_paint
+    # fRealLaborHour = fLaborHoursPerGallon * getGallonsOfPaint()
+    # print("Hours of Labor: ", float(fRealLaborHour))
     return float(fRealLaborHour)
 
-def getPaintCost():
-    fRealCostPaint = fPaintPrice * getGallonsOfPaint()
-    print(float(fRealCostPaint))
+def getPaintCost(paint_price, gallons_of_paint):
+    fRealCostPaint = paint_price * gallons_of_paint
+    # print("Cost of Paint : $ ", float(fRealCostPaint))
     return float(fRealCostPaint)
 
+def showCostEstimate(new):
+    print("Hi")
+
 def getFloatInput(prompt): #this function is to check that inputs are positive numerical values
-  while True:
-    try: #this is not covered in the class text. I had to google this - it was driving me crazy trying to validate non-numerical values
-      uNumCheck = float(input(prompt))
+  while True: #loop for data validation
+    try:
+      uNumCheck = float(input(prompt)) #tries to turn the input into a float
       return uNumCheck #returns the function value to variables outside the function.
-    except ValueError:
+    except ValueError: #if the input cannot turn into a float, this is called
       print("Invalid input. Please enter a valid number.")
 
 
-fSquareFeetOfWall = (getFloatInput("Enter Square Feet of the Wall: "))
-fPaintPrice = getFloatInput("Enter Paint Price: ")
-fFeetPerGallonOfPaint = getFloatInput("Enter the feet per gallon of paint: ")
-fLaborHoursPerGallon = getFloatInput("Enter Labor Hours per Gallon: ")
-fPaintingLaborChargePerHour = getFloatInput("Enter Painting Labor charge per hour: ")
+# fSquareFeetOfWall = (getFloatInput("Enter Square Feet of the Wall: "))
+# fPaintPrice = getFloatInput("Enter Paint Price: ")
+# fFeetPerGallonOfPaint = getFloatInput("Enter the feet per gallon of paint: ")
+# fLaborHoursPerGallon = getFloatInput("Enter Labor Hours per Gallon: ")
+# fPaintingLaborChargePerHour = getFloatInput("Enter Painting Labor charge per hour: ")
 
-MA = .06
-CT = .0625
-ME = .085
-NH = .0
-RI = .07
-VT = .06
+
 
 main()
 
-# fUserState = input("Please enter the state of the job") #the state location of the job
-# fUserLname = input("Please enter your surname name")
-
-# uValueList = [
-#     fSquareFeetOfWall,
-#     fPaintPrice,
-#     fFeetPerGallonOfPaint,
-#     fLaborHoursPerGallon,
-#     fPaintingLaborChargePerHour
-# ]
-#
-# print(uValueList)
-
-# A painting company has determined that for every 112 square
-# feet of wall space, one gallon of paint and eight hours of labor
-# will be required. The company charges $35.00 per hour for
-# labor. Write a program that asks the user to enter the square
-# feet of wall space to be painted and the price of the paint per
-# gallon
