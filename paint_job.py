@@ -15,14 +15,28 @@ def main():
     fLabor_cost = getLaborCost(fPaintingLaborChargePerHour, fFeetPerGallonOfPaint, fLaborHoursPerGallon,fSquareFeetOfWall)
     fPaint_Cost = getPaintCost(fPaintPrice, getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint))
     fTotalTax =  ((fLabor_cost + fPaint_Cost) * fStateSalesTax)
-    fTotalCost = fTotalTax + fLabor_cost + fPaint_Cost
-    print("Gallons of paint: ", Gallon_Of_Paint)
+    fTotalCost = showCostEstimate(fLabor_cost, fPaint_Cost, fTotalTax)
+    output_file(fUserName, Gallon_Of_Paint, fHours_of_labor, fPaint_Cost, fLabor_cost, fTotalTax, fTotalCost)
+    print("Gallons of paint:" , Gallon_Of_Paint)
     print("Hours of labor: ", fHours_of_labor)
-    print("Paint Cost: $", fPaint_Cost)
-    print("Labor Charges: $", fLabor_cost)
-    print("Tax: $", fTotalTax)
-    print("Total Cost: $", fTotalCost)
+    print("Paint Cost: ${:.2f}".format(fPaint_Cost))
+    print("Labor Charges: ${:.2f}".format(fLabor_cost))
+    print("Tax: ${:.2f}".format(fTotalTax))
+    print("Total Cost: ${:.2f}".format(fTotalCost))
+    print(f"{fUserName}_PaintJobOutput.txt was created.")
 
+def showCostEstimate(labor, paint, tax):
+    return labor + paint + tax
+
+def output_file(name, gallons, laborHours, paintCost, laborCost, totalTax, totalCost):
+    file = open(f"{name}_PaintJobOutput.txt", "w")
+    file.write(f"Gallons of paint: {gallons:}\n"
+               f"Hours of labor: {laborHours:.2f}\n"
+               f"Paint cost: ${paintCost:.2f}\n"
+               f"Labor Charges: ${laborCost:.2f}\n"
+               f"Tax: ${totalTax:.2f}\n"
+               f"Total Cost: ${totalCost:.2f}\n")
+    file.close()
 
 def getSalesTax(prompt):
     fStates = (prompt)
@@ -65,8 +79,6 @@ def getPaintCost(paint_price, gallons_of_paint):
     # print("Cost of Paint : $ ", float(fRealCostPaint))
     return float(fRealCostPaint)
 
-def showCostEstimate(new):
-    print("Hi")
 
 def getFloatInput(prompt): #this function is to check that inputs are positive numerical values
   while True: #loop for data validation
