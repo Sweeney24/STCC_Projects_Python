@@ -17,7 +17,7 @@ def main(): # the main function, contains logic for how the program operates.
     fPaint_Cost = getPaintCost(fPaintPrice, getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)) # variable to store the estimated cost of paint for the job
     fTotalTax =  ((fLabor_cost + fPaint_Cost) * fStateSalesTax) # Variable to store the calculated tax amount
     fTotalCost = showCostEstimate(fLabor_cost, fPaint_Cost, fTotalTax, Gallon_Of_Paint,fHours_of_labor, fPaint_Cost,
-                                  fLabor_cost, fTotalTax, fUserName) #variable to store the output of the cost estimator function - really only saves the sum of labor, paint and tax.
+                                  fLabor_cost, fTotalTax) #variable to store the output of the cost estimator function - really only saves the sum of labor, paint and tax.
     output_file(fUserName, Gallon_Of_Paint, fHours_of_labor, fPaint_Cost, fLabor_cost, fTotalTax, fTotalCost) #calling function to output the info to a text file.
 
     # print("Gallons of paint:" , Gallon_Of_Paint)   These have been moved to the cost estimator function.
@@ -28,7 +28,7 @@ def main(): # the main function, contains logic for how the program operates.
     # print("Total Cost: ${:.2f}".format(fTotalCost))
     # print(f"{fUserName}_PaintJobOutput.txt was created.")
 
-def showCostEstimate(labor, paint, tax, gallons, laborHours, paintCost, laborCost, totalTax, name):
+def showCostEstimate(labor, paint, tax, gallons, laborHours, paintCost, laborCost, totalTax):
     #function to calculate total cost of job. Also prints out the calculated values of the other functions
     totalCost = labor + paint + tax
     print("{:<15} {:>18}".format("Gallons of paint:", gallons))
@@ -40,7 +40,7 @@ def showCostEstimate(labor, paint, tax, gallons, laborHours, paintCost, laborCos
     return totalCost
 
 def output_file(name, gallons, laborHours, paintCost, laborCost, totalTax, totalCost): #creates the output file
-    # print("Gallons of paint:" , gallons)
+    # print("Gallons of paint:" , gallons) #old code for printing out info needed. moved to cost estimator function
     # print("Hours of labor: ", laborHours)
     # print("Paint Cost: ${:.2f}".format(paintCost))
     # print("Labor Charges: ${:.2f}".format(laborCost))
