@@ -9,7 +9,6 @@ def main(): # the main function, contains logic for how the program operates.
     fPaintingLaborChargePerHour = getFloatInput("Enter Painting Labor charge per hour: ") # labor charges
     fStateSalesTax = getSalesTax(input("State the job is in: ")) #for calculating sales tax
     fUserName = input("Enter your last name: ") #get the users last name
-    # getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)
     fGallons_Of_Paint = getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)#variable for storing function estimating gallons of paint needed
     fHours_of_labor = getLaborHours(fLaborHoursPerGallon, fGallons_Of_Paint) # variable to store the hours of labor
     fLabor_cost = getLaborCost(fPaintingLaborChargePerHour, fFeetPerGallonOfPaint, fLaborHoursPerGallon,fSquareFeetOfWall) #variable to store the labor cost
