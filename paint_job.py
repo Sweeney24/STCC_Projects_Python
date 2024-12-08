@@ -1,6 +1,5 @@
 #paint job estimator for Prof. C's python class
 import math
-
 def main(): # the main function, contains logic for how the program operates.
     #Other functions called here and saved to variables for inputting into further functions
     fSquareFeetOfWall = (getFloatInput("Enter Square Feet of the Wall: ")) #get the square feet
@@ -11,14 +10,14 @@ def main(): # the main function, contains logic for how the program operates.
     fStateSalesTax = getSalesTax(input("State the job is in: ")) #for calculating sales tax
     fUserName = input("Enter your last name: ") #get the users last name
     # getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)
-    Gallon_Of_Paint = getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)#variable for storing function estimating gallons of paint needed
-    fHours_of_labor = getLaborHours(fLaborHoursPerGallon, Gallon_Of_Paint) # variable to store the hours of labor
+    fGallons_Of_Paint = getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)#variable for storing function estimating gallons of paint needed
+    fHours_of_labor = getLaborHours(fLaborHoursPerGallon, fGallons_Of_Paint) # variable to store the hours of labor
     fLabor_cost = getLaborCost(fPaintingLaborChargePerHour, fFeetPerGallonOfPaint, fLaborHoursPerGallon,fSquareFeetOfWall) #variable to store the labor cost
     fPaint_Cost = getPaintCost(fPaintPrice, getGallonsOfPaint(fSquareFeetOfWall, fFeetPerGallonOfPaint)) # variable to store the estimated cost of paint for the job
     fTotalTax =  ((fLabor_cost + fPaint_Cost) * fStateSalesTax) # Variable to store the calculated tax amount
-    fTotalCost = showCostEstimate(fLabor_cost, fPaint_Cost, fTotalTax, Gallon_Of_Paint,fHours_of_labor, fPaint_Cost,
+    fTotalCost = showCostEstimate(fLabor_cost, fPaint_Cost, fTotalTax, fGallons_Of_Paint,fHours_of_labor, fPaint_Cost,
                                   fLabor_cost, fTotalTax) #variable to store the output of the cost estimator function - really only saves the sum of labor, paint and tax.
-    output_file(fUserName, Gallon_Of_Paint, fHours_of_labor, fPaint_Cost, fLabor_cost, fTotalTax, fTotalCost) #calling function to output the info to a text file.
+    output_file(fUserName, fGallons_Of_Paint, fHours_of_labor, fPaint_Cost, fLabor_cost, fTotalTax, fTotalCost) #calling function to output the info to a text file.
 
     # print("Gallons of paint:" , Gallon_Of_Paint)   These have been moved to the cost estimator function.
     # print("Hours of labor: ", fHours_of_labor)
@@ -40,12 +39,6 @@ def showCostEstimate(labor, paint, tax, gallons, laborHours, paintCost, laborCos
     return totalCost
 
 def output_file(name, gallons, laborHours, paintCost, laborCost, totalTax, totalCost): #creates the output file
-    # print("Gallons of paint:" , gallons) #old code for printing out info needed. moved to cost estimator function
-    # print("Hours of labor: ", laborHours)
-    # print("Paint Cost: ${:.2f}".format(paintCost))
-    # print("Labor Charges: ${:.2f}".format(laborCost))
-    # print("Tax: ${:.2f}".format(totalTax))
-    # print("Total Cost: ${:.2f}".format(totalCost))
     print(f"{name}_PaintJobOutput.txt was created.")
     file = open(f"{name}_PaintJobOutput.txt", "w")
     file.write(f"{'Gallons of paint:':<20} {gallons:>20}\n"
@@ -70,34 +63,25 @@ def getSalesTax(prompt): #if logic for sales tax. NH omitted since the value is 
         fStateTax = .06
     else:
         fStateTax = 0.0
-    # print(fStateTax)
     return fStateTax
 
 def getLaborCost(paint_labor_hour, feet_per_gallon,lab_hours_per_gallon, square_feet_of_wall): #get the total labor cost
-    # fRealLaborCost = getLaborHours() * fPaintingLaborChargePerHour
     #math to calculate the total labor cost, calls the function to get total gallons.
     fRealLaborCost = getLaborHours(lab_hours_per_gallon, getGallonsOfPaint(square_feet_of_wall, feet_per_gallon)) * paint_labor_hour
-    # print(float(fRealLaborCost))
     return fRealLaborCost
 
 def getGallonsOfPaint(sq_ft_wall, feet_per_gallon): #get the total gallons needed for the project
     fRealGallons = sq_ft_wall / feet_per_gallon #math to calculate total gallons needed
-    # fRealGallons = fSquareFeetOfWall / fFeetPerGallonOfPaint
     fRealGallons = math.ceil(fRealGallons) #math function that rounds up
-    # print("gallons of paint: ", int(fRealGallons))
     return int(fRealGallons) #returning integer
 
 def getLaborHours(lab_hours_gal, gallons_of_paint): #gets the total labor hours and returns it
     fRealLaborHour = lab_hours_gal * gallons_of_paint #math to calculate labor hours
-    # fRealLaborHour = fLaborHoursPerGallon * getGallonsOfPaint()
-    # print("Hours of Labor: ", float(fRealLaborHour))
     return float(fRealLaborHour)
 
 def getPaintCost(paint_price, gallons_of_paint): #gets the total paint cost and returns it.
     fRealCostPaint = paint_price * gallons_of_paint
-    # print("Cost of Paint : $ ", float(fRealCostPaint))
     return float(fRealCostPaint)
-
 
 def getFloatInput(prompt): #this function is to check that inputs are positive numerical values
   while True: #loop for data validation
@@ -108,18 +92,9 @@ def getFloatInput(prompt): #this function is to check that inputs are positive n
       print("Invalid input. Please enter a valid number.")
 
 main()
-
-
 #Old variables - moved into main function
-
-
 # fSquareFeetOfWall = (getFloatInput("Enter Square Feet of the Wall: "))
 # fPaintPrice = getFloatInput("Enter Paint Price: ")
 # fFeetPerGallonOfPaint = getFloatInput("Enter the feet per gallon of paint: ")
 # fLaborHoursPerGallon = getFloatInput("Enter Labor Hours per Gallon: ")
 # fPaintingLaborChargePerHour = getFloatInput("Enter Painting Labor charge per hour: ")
-
-
-
-
-
