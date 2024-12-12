@@ -19,10 +19,10 @@ def getMedian(user_list): #function to find median
         #the below code uses the builtin int() and len() functions to make accessing the index viable.
         middle1 = user_list[int(len(user_list) / 2) - 1] #variable for the middle number, by accessing the index in the middle of the list, minus 1.
         middle2 = user_list[int(len(user_list) / 2)] #variable for the next middle number, again by accessing the index.
-        median = (middle1 + middle2) / 2 #simple math using the stored variables to find median.
+        return (middle1 + middle2) / 2 #simple math using the stored variables to find median and return it
     else:
-        median = user_list[int(len(user_list) / 2)] #simply assigning median here by accessing the index at the middle with simple math.
-    return median
+        return user_list[int(len(user_list) / 2)] #returning median here by accessing the index at the middle with simple math.
+
 
 def main():
     uRealEstateValues = [] #empty list to be populated by loops below
