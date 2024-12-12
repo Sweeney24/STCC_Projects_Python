@@ -26,27 +26,27 @@ def getMedian(user_list): #function to find median
 
 def main():
     uRealEstateValues = [] #empty list to be populated by loops below
-    while True: #continues looping until not true, or it reaches the builtin break.
-        uSalesPrice = getFloatInput("Enter in the sales value:")
+    while True: #continues looping until it reaches the builtin break.
+        uSalesPrice = getFloatInput("Enter in the sales value: ")
         uRealEstateValues.append(uSalesPrice) #using builtin .append() function to append to the list in this function.
         uAnotherValue = input("Enter another value yes or no: ")
         # loop to evaluate user input to see if it DOES NOT match the tuple and uses the builtin function to automatically make the input lower case
         while uAnotherValue.lower() not in ("y", "yes", "n", "no"):
             uAnotherValue = input("invalid entry, enter (y)es or (n)o")
         if uAnotherValue.lower() == "n":
-            break #breaks this lower loop, returns to the upper loop of getting another sales price
-
+            break #breaks the whole loop, and continues reading code below.
 
     uRealEstateValues.sort() #use the builtin function to sort the list
     uPropertyNumber = 0 #declare this variable so it's value can increase through each iteration of the for loop below
     for saledata in uRealEstateValues:
-        uPropertyNumber += 1 #increase value of variable
-        print(f'Property {uPropertyNumber}: ${saledata}') #print out the individual value of each property entered
-    print(f'Minimum: ${uRealEstateValues[0]}') #print out the minimum by accessing the first index
-    print(f'Maximum ${uRealEstateValues[-1]}') #print out the maximum by accessing the last index
-    print(f'Total: ${sum(uRealEstateValues)}') #print the sum using the builtin func
-    print(f'Average: ${sum(uRealEstateValues) / len(uRealEstateValues)}') #print the average using builtin and simple math
-    print(f'Median: ${getMedian(uRealEstateValues)}') #print median using the function specific to this class
-    print(f'Commission: ${sum(uRealEstateValues) * .03}') #print the commission by using builtin and simple math
+        uPropertyNumber += 1 #increase value of variable - important it happens before the print as to not start at 0.
+        print(f"{'Property ' + str(uPropertyNumber) + ':':<15} ${saledata:>14.2f}") #print out the individual value of each property entered
+    print(f"{'Minimum:':<15} ${uRealEstateValues[0]:>14.2f}") #print out the minimum by accessing the first index
+    print(f"{'Maximum:':<15} ${uRealEstateValues[-1]:>14.2f}") #print out the maximum by accessing the last index
+    print(f"{'Total:':<15} ${sum(uRealEstateValues):>14.2f}") #print the sum using the builtin func
+    print(f"{'Average:':<15} ${sum(uRealEstateValues) / len(uRealEstateValues):>14.2f}") #print the average using builtin and simple math
+    print(f"{'Median:':<15} ${getMedian(uRealEstateValues):>14.2f}") #print median using the function specific to this class
+    print(f"{'Commission:':<15} ${sum(uRealEstateValues) * .03:>14.2f}") #print the commission by using builtin and simple math
 
 main()
+
