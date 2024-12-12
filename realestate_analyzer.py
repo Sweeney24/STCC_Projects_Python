@@ -41,8 +41,8 @@ def main():
     for saledata in uRealEstateValues:
         uPropertyNumber += 1 #increase value of variable - important it happens before the print as to not start at 0.
         print(f"{'Property ' + str(uPropertyNumber) + ':':<15} ${saledata:>14.2f}") #print out the individual value of each property entered
-    print(f"{'Minimum:':<15} ${uRealEstateValues[0]:>14.2f}") #print out the minimum by accessing the first index
-    print(f"{'Maximum:':<15} ${uRealEstateValues[-1]:>14.2f}") #print out the maximum by accessing the last index
+    print(f"{'Minimum:':<15} ${min(uRealEstateValues):>14.2f}") #print out the minimum with summary function
+    print(f"{'Maximum:':<15} ${max(uRealEstateValues):>14.2f}") #print out the maximum with summary function
     print(f"{'Total:':<15} ${sum(uRealEstateValues):>14.2f}") #print the sum using the builtin func
     print(f"{'Average:':<15} ${sum(uRealEstateValues) / len(uRealEstateValues):>14.2f}") #print the average using builtin and simple math
     print(f"{'Median:':<15} ${getMedian(uRealEstateValues):>14.2f}") #print median using the function specific to this class
