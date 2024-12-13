@@ -31,8 +31,8 @@ def main():
         uRealEstateValues.append(uSalesPrice) #using builtin .append() function to append to the list in this function.
         uAnotherValue = input("Enter another value yes or no: ")
         # loop to evaluate user input to see if it DOES NOT match the tuple and uses the builtin function to automatically make the input lower case
-        while uAnotherValue.lower() not in ("y", "yes", "n", "no"):
-            uAnotherValue = input("invalid entry, enter (y)es or (n)o")
+        while uAnotherValue.lower() not in ("y", "yes", "n", "no" ):
+            uAnotherValue = input("invalid entry, enter (y)es or (n)o: ")
         if uAnotherValue.lower() == "n":
             break #breaks the whole loop, and continues reading code below.
 
@@ -49,4 +49,3 @@ def main():
     print(f"{'Commission:':<15} ${sum(uRealEstateValues) * .03:>14.2f}") #print the commission by using builtin and simple math
 
 main()
-
